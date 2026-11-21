@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tejovanth's personal portfolio showcasing programming skills, web development knowledge, education and contact information.">
+    <meta name="author" content="Tejovanth">
+    <title>Tejovanth | Personal Portfolio</title>
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%236c5ce7'/%3E%3Ctext x='50' y='66' font-family='Arial' font-size='48' font-weight='800' fill='white' text-anchor='middle'%3ETT%3C/text%3E%3C/svg%3E">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0f1226;
+            --bg-alt: #151936;
+            --card: #1b2044;
+            --primary: #6c5ce7;
+            --accent: #00cec9;
+            --text: #e8eaf6;
+            --muted: #a3a8c8;
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        section { padding: 100px 8%; }
+
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(15, 18, 38, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 8%;
+        }
+
+        .logo, .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 18px rgba(108, 92, 231, 0.45);
+        }
+
+        .logo-icon span {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #fff;
+        }
+
+        .logo-text { font-size: 1.3rem; font-weight: 700; }
+        .logo-text span { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 32px; }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--muted);
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .nav-button {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .nav-button:hover { background: #5848d6; transform: translateY(-2px); }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 0;
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid var(--primary);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .primary-btn { background: var(--primary); color: #fff; }
+        .primary-btn:hover { background: #5848d6; transform: translateY(-3px); }
+
+        .secondary-btn { background: transparent; color: #fff; }
+        .secondary-btn:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* Home */
+        .home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            padding-top: 120px;
+        }
+
+        .home-content { flex: 1; }
+        .home-content h3 { color: var(--accent); font-weight: 500; font-size: 1.1rem; }
+        .home-content h1 { font-size: 3.4rem; font-weight: 800; line-height: 1.2; }
+        .home-content h1 span { color: var(--primary); }
+        .home-content h2 { font-size: 1.7rem; font-weight: 600; color: var(--accent); margin-bottom: 18px; }
+        .home-content p { color: var(--muted); max-width: 520px; margin-bottom: 30px; }
+        .home-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+        .home-image { flex: 1; display: flex; justify-content: center; }
+
+        .image-circle {
+            position: relative;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            padding: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            box-shadow: 0 0 50px rgba(108, 92, 231, 0.4);
+        }
+
+        .image-circle img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--card);
+        }
+
+        /* Shown automatically only when profile.jpg is missing */
+        .avatar-fallback {
+            display: none;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--card);
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            font-weight: 800;
+            letter-spacing: -4px;
+            color: #fff;
+        }
+
+        .image-circle.no-photo img { display: none; }
+        .image-circle.no-photo .avatar-fallback { display: flex; }
+
+        /* Section titles */
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.4rem; font-weight: 700; }
+        .section-title h2 span { color: var(--primary); }
+        .section-title p { color: var(--muted); }
+
+        /* About */
+        .about { background: var(--bg-alt); }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-image { flex: 1; }
+        .about-image img {
+            border-radius: var(--radius);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-content { flex: 1; }
+        .about-content h3 { font-size: 1.7rem; margin-bottom: 14px; }
+        .about-content > p { color: var(--muted); margin-bottom: 14px; }
+
+        .about-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px 20px;
+            margin: 20px 0 28px;
+        }
+
+        .about-details strong { color: var(--accent); }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+        }
+
+        .skill-card {
+            background: var(--card);
+            padding: 30px 24px;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .skill-card:hover { transform: translateY(-8px); border-color: var(--primary); }
+
+        .skill-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 16px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #fff;
+        }
+
+        .html-icon   { background: #e34f26; }
+        .css-icon    { background: #1572b6; }
+        .python-icon { background: #3776ab; }
+        .java-icon   { background: #e76f00; }
+        .cpp-icon    { background: #00599c; }
+        .c-icon      { background: #5c6bc0; }
+
+        .skill-card h3 { font-size: 1.2rem; }
+        .skill-card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .html-progress   { width: 90%; }
+        .css-progress    { width: 85%; }
+        .python-progress { width: 80%; }
+        .java-progress   { width: 75%; }
+        .cpp-progress    { width: 80%; }
+        .c-progress      { width: 85%; }
+
+        /* Contact */
+        .contact { background: var(--bg-alt); }
+
+        .contact-container {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .contact-info, .contact-form { flex: 1; }
+        .contact-info h3 { font-size: 1.7rem; margin-bottom: 10px; }
+        .contact-info > p { color: var(--muted); margin-bottom: 24px; }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .contact-item span { font-size: 1.4rem; }
+        .contact-item a:hover { color: var(--accent); }
+
+        .contact-form {
+            background: var(--card);
+            padding: 34px;
+            border-radius: var(--radius);
+        }
+
+        .contact-form label {
+            display: block;
+            font-weight: 500;
+            margin: 14px 0 6px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: var(--bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: vertical;
+        }
+
+        .contact-form .btn { margin-top: 22px; width: 100%; }
+
+        .form-status { margin-top: 14px; color: var(--accent); font-weight: 500; min-height: 1.4em; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 8% 24px;
+            background: #0a0c1c;
+        }
+
+        .footer-logo { justify-content: center; margin-bottom: 15px; }
+
+        footer > p { color: var(--muted); }
+
+        .footer-bottom {
+            margin-top: 24px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            section { padding: 80px 6%; }
+            .navbar { padding: 14px 6%; }
+            .menu-toggle { display: block; }
+            .nav-button { display: none; }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                background: var(--bg);
+                display: none;
+                padding: 10px 6% 20px;
+            }
+
+            .nav-links.open { display: flex; }
+            .nav-links a { display: block; padding: 12px 0; }
+
+            .home, .about-container, .contact-container { flex-direction: column; }
+            .home { text-align: center; padding-top: 130px; }
+            .home-content p { margin-inline: auto; }
+            .home-buttons { justify-content: center; }
+            .home-content h1 { font-size: 2.6rem; }
+            .image-circle { width: 260px; height: 260px; }
+            .avatar-fallback { font-size: 4.5rem; }
+            .contact-info, .contact-form, .about-image, .about-content { width: 100%; }
+        }
+
+        @media (max-width: 480px) {
+            .about-details { grid-template-columns: 1fr; }
+            .logo-text { font-size: 1.1rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; scroll-behavior: auto !important; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar" aria-label="Main Navigation">
+
+            <a href="#home" class="logo" aria-label="Tejovanth Tech home">
+                <div class="logo-icon"><span>TT</span></div>
+                <div class="logo-text">Tejovanth <span>Tech.</span></div>
+            </a>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="active" aria-current="page">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <a href="#contact" class="nav-button">Let's Talk</a>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+
+        </nav>
+    </header>
+
+
+    <main>
+
+        <section class="home" id="home">
+
+            <div class="home-content">
+                <h3>Hello, Welcome to My Website!</h3>
+                <h1>I'm <span>Tejovanth</span></h1>
+                <h2>Frontend Developer</h2>
+                <p>
+                    I am passionate about Technology, Programming
+                    and Web Development. I enjoy creating attractive,
+                    responsive and user-friendly websites using
+                    modern technologies.
+                </p>
+
+                <div class="home-buttons">
+                    <a href="#about" class="btn primary-btn">About Me</a>
+                    <a href="#contact" class="btn secondary-btn">Contact Me</a>
+                </div>
+            </div>
+
+            <div class="home-image">
+                <div class="image-circle" id="image-circle">
+                    <img src="profile.jpg" alt="Portrait of Tejovanth" id="profile-photo">
+                    <div class="avatar-fallback" aria-hidden="true">TT</div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <section class="about" id="about">
+
+            <div class="section-title">
+                <h2>About <span>Me</span></h2>
+                <p>Get to Know More About Me</p>
+            </div>
+
+            <div class="about-container">
+
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=85"
+                        alt="Computer and laptop used for web development">
+                </div>
+
+                <div class="about-content">
+                    <h3>Who Am I?</h3>
+
+                    <p>
+                        I am a Computer Science and Engineering graduate
+                        with a strong interest in Software Development
+                        and web technologies.
+                    </p>
+
+                    <p>
+                        I have knowledge of C, C++, Python, Java,
+                        HTML and CSS. I enjoy learning new technologies
+                        and solving real-world problems through programming.
+                    </p>
+
+                    <div class="about-details">
+                        <p><strong>Education:</strong> B.Tech - CSE</p>
+                        <p><strong>Percentage:</strong> 80%</p>
+                        <p><strong>Experience:</strong> Fresher</p>
+                        <p><strong>Interest:</strong> Web Development</p>
+                        <p><strong>Goal:</strong> Software Developer</p>
+                    </div>
+
+                    <a href="#skills" class="btn primary-btn">Explore My Skills</a>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="skills" id="skills">
+
+            <div class="section-title">
+                <h2>My <span>Skills</span></h2>
+                <p>Technologies and Programming Languages I Know</p>
+            </div>
+
+            <div class="skills-container">
+
+                <div class="skill-card">
+                    <div class="skill-icon html-icon">HTML5</div>
+                    <h3>HTML</h3>
+                    <p>Web Page Structure</p>
+                    <div class="progress-bar" role="progressbar" aria-label="HTML skill level"
+                        aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress html-progress"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon css-icon">CSS3</div>
+                    <h3>CSS</h3>
+                    <p>Web Page Styling</p>
+                    <div class="progress-bar" role="progressbar" aria-label="CSS skill level"
+                        aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress css-progress"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon python-icon">Py</div>
+                    <h3>Python</h3>
+                    <p>Programming Language</p>
+                    <div class="progress-bar" role="progressbar" aria-label="Python skill level"
+                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress python-progress"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon java-icon">Java</div>
+                    <h3>Java</h3>
+                    <p>Object-Oriented Programming</p>
+                    <div class="progress-bar" role="progressbar" aria-label="Java skill level"
+                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress java-progress"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon cpp-icon">C++</div>
+                    <h3>C++</h3>
+                    <p>Programming Language</p>
+                    <div class="progress-bar" role="progressbar" aria-label="C++ skill level"
+                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress cpp-progress"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon c-icon">C</div>
+                    <h3>C Programming</h3>
+                    <p>Fundamental Programming</p>
+                    <div class="progress-bar" role="progressbar" aria-label="C programming skill level"
+                        aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress c-progress"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="contact" id="contact">
+
+            <div class="section-title">
+                <h2>Contact <span>Me</span></h2>
+                <p>Let's Connect and Work Together</p>
+            </div>
+
+            <div class="contact-container">
+
+                <div class="contact-info">
+                    <h3>Let's Talk!</h3>
+                    <p>
+                        If you have any questions, opportunities
+                        or projects, feel free to contact me.
+                    </p>
+
+                    <div class="contact-item">
+                        <span aria-hidden="true">📧</span>
+                        <p><a href="mailto:tejovanth990@gmail.com">tejovanth990@gmail.com</a></p>
+                    </div>
+
+                    <div class="contact-item">
+                        <span aria-hidden="true">📱</span>
+                        <p><a href="tel:+918519897847">+91 85198 97847</a></p>
+                    </div>
+
+                    <div class="contact-item">
+                        <span aria-hidden="true">📍</span>
+                        <p>Hyderabad, India</p>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contact-form">
+
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter Your Name" required>
+
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
+
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Enter Subject" required>
+
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Write Your Message" required></textarea>
+
+                    <button type="submit" class="btn primary-btn">Send Message</button>
+
+                    <p class="form-status" id="form-status" role="status"></p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-logo">
+            <div class="logo-icon"><span>TT</span></div>
+            <div class="logo-text">Tejovanth <span>Tech.</span></div>
+        </div>
+
+        <p>Designed with Creativity and Passion.</p>
+
+        <div class="footer-bottom">
+            <p>Copyright &copy; 2026 Tejovanth Tech. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+
+    <script>
+        // Profile photo: show TT badge if profile.jpg cannot be loaded
+        (function () {
+            const img = document.getElementById('profile-photo');
+            const circle = document.getElementById('image-circle');
+            const showFallback = () => circle.classList.add('no-photo');
+
+            img.addEventListener('error', showFallback);
+            if (img.complete && img.naturalWidth === 0) showFallback();
+        })();
+
+        // Mobile menu
+        const toggle = document.getElementById('menu-toggle');
+        const links = document.getElementById('nav-links');
+
+        toggle.addEventListener('click', () => {
+            const open = links.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open);
+        });
+
+        links.querySelectorAll('a').forEach(a =>
+            a.addEventListener('click', () => {
+                links.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+            })
+        );
+
+        // Highlight active nav link on scroll
+        const sections = document.querySelectorAll('main section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(l => {
+                        const active = l.getAttribute('href') === '#' + entry.target.id;
+                        l.classList.toggle('active', active);
+                        if (active) l.setAttribute('aria-current', 'page');
+                        else l.removeAttribute('aria-current');
+                    });
+                }
+            });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+
+        sections.forEach(s => observer.observe(s));
+
+        // Contact form opens the visitor's email app
+        document.getElementById('contact-form').addEventListener('submit', e => {
+            e.preventDefault();
+            const f = e.target.elements;
+            const body = 'Name: ' + f['name'].value + '\nEmail: ' + f['email'].value + '\n\n' + f['message'].value;
+            window.location.href = 'mailto:tejovanth990@gmail.com?subject=' +
+                encodeURIComponent(f['subject'].value) + '&body=' + encodeURIComponent(body);
+            document.getElementById('form-status').textContent = 'Opening your email app…';
+        });
+    </script>
+
+</body>
+
+</html>
